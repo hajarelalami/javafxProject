@@ -116,6 +116,8 @@ public class ChefFieldController
 
     @FXML
     private DatePicker											ChefOrderDate;
+    @FXML
+    private DatePicker datePicker;
 
     @FXML
     private DatePicker											ChefReceptionDate;
@@ -331,7 +333,7 @@ public class ChefFieldController
 
         PreparedStatement prp = null;
         try {
-            prp = con.prepareStatement("SELECT quantitytable.idquantity,quantitytable.quantitepresente FROM quantitytable INNER JOIN linecharttable ON linecharttable.element=quantitytable.element WHERE quantitytable.element='fraise'");
+            prp = con.prepareStatement("SELECT date,quantitepresente FROM quantitytable  WHERE quantitytable.element='fraise'");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -378,7 +380,7 @@ public class ChefFieldController
 
         PreparedStatement prp = null;
         try {
-            prp = con.prepareStatement("SELECT quantitytable.idquantity,quantitytable.quantitepresente FROM quantitytable INNER JOIN linecharttable ON linecharttable.element=quantitytable.element WHERE quantitytable.element='poisson'");
+            prp = con.prepareStatement("SELECT SELECT date,quantitepresente FROM quantitytable  WHER quantitytable.element='poisson'");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -458,15 +460,15 @@ public class ChefFieldController
 
     private void AddData() {
         DatabaseHandler databaseHandler = new DatabaseHandler();
-
+        LocalDate datee = datePicker.getValue();
         String elemnt =MenuButton.getValue().toString();
         int initial = Integer.parseInt(InitialQuantity.getText());
         int consumed = Integer.parseInt(ConsumedQuantity.getText());
         int ordered = Integer.parseInt(OrderedQuantity.getText());
         int present = Integer.parseInt(InitialQuantity.getText())+Integer.parseInt(ConsumedQuantity.getText())-Integer.parseInt(OrderedQuantity.getText());
 
+        Quantity quantity= new Quantity(datee,elemnt,initial,consumed,present,ordered,present);
 
-        Quantity quantity = new Quantity(elemnt,initial,consumed,ordered,present);
 
         databaseHandler.getQuantity(quantity);
     }

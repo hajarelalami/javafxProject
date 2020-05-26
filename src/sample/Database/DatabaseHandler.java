@@ -234,16 +234,17 @@ public class DatabaseHandler extends Configs
     public void getQuantity(Quantity quantity){
 
         String insert = "INSERT INTO " +
-                Const.Quantity_Table + "(" + Const.Quantity_Element+ "," + Const.Quantity_initial + "," + Const.Quantity_consumed + "," + Const.Quantity_ordered + ","+ Const.Quantity_present+ ")" +
-                "Values(?,?,?,?,?)";
+                Const.Quantity_Table + "("+ Const.Quantity_Date + ","  + Const.Quantity_Element+ "," + Const.Quantity_initial + "," + Const.Quantity_consumed + "," + Const.Quantity_ordered + ","+ Const.Quantity_present+ ")" +
+                "Values(?,?,?,?,?,?)";
         try
         {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
-            preparedStatement.setString(1, quantity.getElement());
-            preparedStatement.setInt(2, quantity.getInitial());
-            preparedStatement.setInt(3, quantity.getConsumed());
-            preparedStatement.setInt(4, quantity.getOrdered());
-            preparedStatement.setInt(5, quantity.getPresent());
+            preparedStatement.setDate(1, java.sql.Date.valueOf(quantity.getDate()));
+            preparedStatement.setString(2, quantity.getElement());
+            preparedStatement.setInt(3, quantity.getInitial());
+            preparedStatement.setInt(4, quantity.getConsumed());
+            preparedStatement.setInt(5, quantity.getOrdered());
+            preparedStatement.setInt(6, quantity.getPresent());
             preparedStatement.executeUpdate();
 
         }
