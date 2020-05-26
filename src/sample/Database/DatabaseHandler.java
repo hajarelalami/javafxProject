@@ -1,5 +1,4 @@
 package sample.Database;
-
 import sample.Model.*;
 
 import java.sql.*;
@@ -254,6 +253,8 @@ public class DatabaseHandler extends Configs
         }
 
     }
+
+
 
     public void getPlat(Menu plat)
     {

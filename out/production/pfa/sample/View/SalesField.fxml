@@ -20,7 +20,7 @@
                     <children>
                         <AnchorPane prefHeight="169.0" prefWidth="900.0" style="-fx-background-color: #abd1b5;">
                             <children>
-                                <Text layoutX="401.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders" wrappingWidth="98.82421875">
+                                <Text fill="WHITE" layoutX="401.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders" wrappingWidth="98.82421875">
                                     <font>
                                         <Font name="Bell MT Italic" size="34.0" />
                                     </font>
@@ -36,15 +36,16 @@
                         </AnchorPane>
                         <TableView fx:id="orderstable" layoutX="47.0" layoutY="125.0" prefHeight="355.0" prefWidth="807.0">
                             <columns>
-                                <TableColumn fx:id="orderID" prefWidth="175.0" text="OrderID" />
-                                <TableColumn fx:id="orderDate" prefWidth="190.0" text="Date" />
-                                <TableColumn fx:id="orderCommande" prefWidth="216.0" text="Commande" />
-                                <TableColumn fx:id="orderQuantity" prefWidth="225.0" text="Quantity" />
+                                <TableColumn fx:id="orderID" prefWidth="175.0" style="-fx-background-color: E8E8F8;" text="OrderID" />
+                                <TableColumn fx:id="orderDate" prefWidth="190.0" style="-fx-background-color: #E8E8F8;" text="Date" />
+                                <TableColumn fx:id="orderCommande" prefWidth="216.0" style="-fx-background-color: #E8E8F8;" text="Commande" />
+                                <TableColumn fx:id="orderQuantity" prefWidth="225.0" style="-fx-background-color: #E8E8F8;" text="Quantity" />
                             </columns>
                             <effect>
                                 <DropShadow />
                             </effect>
                         </TableView>
+                        <Button fx:id="ORDERSUPDATE" layoutX="423.0" layoutY="508.0" mnemonicParsing="false" text="Refresh" />
                     </children>
                 </AnchorPane>
             </content>
@@ -76,3 +77,4 @@
         </Tab>
     </tabs>
 </TabPane>
+

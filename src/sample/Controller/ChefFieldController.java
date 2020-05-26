@@ -618,8 +618,8 @@ public class ChefFieldController
         }else{
             storagetype = Textstoragetype.getText().trim();
         }
-
-        String idelement = "";
+        String idelement;
+        idelement = "";
         if(ZoneA.isSelected() || TypeHumide.isSelected()){
             idelement="AH"+TextidElement.getText().trim();
         }else if(ZoneA.isSelected() || TypeFroid.isSelected()){
@@ -632,7 +632,7 @@ public class ChefFieldController
         Storage storage = new Storage( idelement,elementName, Storagezone, storagetype);
 
         databaseHandler.addelement(storage);
-        UpdateTable();
+        UpdateTabl();
 
 
         //storage.setDoctorId(LoginController.userConnectedId);
@@ -696,13 +696,13 @@ public class ChefFieldController
     }
     private void UpdateTabl() {
         StrorageIDElement.setCellValueFactory(new PropertyValueFactory<Storage,String>("idelement"));
-            StrorageElement.setCellValueFactory(new PropertyValueFactory<Storage,String>("element"));
-            StorageZone.setCellValueFactory(new PropertyValueFactory<Storage,String>("storagezone"));
-            StorageType.setCellValueFactory(new PropertyValueFactory<Storage,String>("storagetype"));
+        StrorageElement.setCellValueFactory(new PropertyValueFactory<Storage,String>("element"));
+        StorageZone.setCellValueFactory(new PropertyValueFactory<Storage,String>("storagezone"));
+        StorageType.setCellValueFactory(new PropertyValueFactory<Storage,String>("storagetype"));
 
 
-            oblist = showElement();
-            StorageTable.setItems(oblist);
+        oblist = showElement();
+        StorageTable.setItems(oblist);
 
     }
     public void getSelected(javafx.scene.input.MouseEvent event)
