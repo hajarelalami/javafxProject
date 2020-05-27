@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 
 import javafx.scene.chart.LineChart;
@@ -73,6 +75,8 @@ public class ChefFieldController
 
     @FXML
     private TextField leg3;
+    @FXML
+    private TextField searchbox;
 
     @FXML
     private TextField vvpolav;
@@ -100,7 +104,7 @@ public class ChefFieldController
     private URL															location;
 
     @FXML
-    private TableView<MenuTable>						menushown;
+    private TableView<MenuTable> menushown;
 
     @FXML
     private TableColumn<MenuTable, Integer>	PatientId;
@@ -236,10 +240,31 @@ public class ChefFieldController
         UpdateComboBoxOrder();
         UpdateTable();
 
-        ContextMenu contextMenu=new ContextMenu();
-        MenuItem poisson=new MenuItem("poisson");
+        FilteredList<MenuTable> filteredData = new FilteredList<>(tableau, p -> true);
+        searchbox.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(MenuTable -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
 
-        MenuItem fraise=new MenuItem("fraise");
+                if (MenuTable.getLunch().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (MenuTable.getDinner().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (MenuTable.getBreakfast().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                return false; // Does not match.
+            });
+        });
+        ContextMenu contextMenu=new ContextMenu();
+        MenuItem poisson=new MenuItem("fish");
+
+        MenuItem fraise=new MenuItem("strawberry");
         poisson.setOnAction(event->{
             DrawChartPoisson();
         });
@@ -316,7 +341,15 @@ public class ChefFieldController
         });
         RefreshButton.setOnAction(event ->{
             AddData();
+            clear();
         });
+    }
+
+    private void clear() {
+            pick.getEditor().clear();
+             InitialQuantity.clear();
+            ConsumedQuantity.clear();
+            OrderedQuantity.clear();
     }
 
     private void UpdateComboBoxOrder() {
@@ -596,8 +629,7 @@ public class ChefFieldController
             }
             try
             {
-                tableau
-                        .add(new MenuTable(rs.getInt("idpatientstable"), rs.getString("breakfast"), rs.getString("lunch"), rs.getString("dinner")));
+                tableau.add(new MenuTable(rs.getInt("idpatientstable"), rs.getString("breakfast"), rs.getString("lunch"), rs.getString("dinner")));
             }
             catch (SQLException throwables)
             {
@@ -623,6 +655,7 @@ public class ChefFieldController
 
         tableau = showMenu();
         menushown.setItems(tableau);
+
     }
 
     public void addOrder()
