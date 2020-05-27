@@ -117,7 +117,7 @@ public class ChefFieldController
     @FXML
     private DatePicker											ChefOrderDate;
     @FXML
-    private DatePicker datePicker;
+    private DatePicker pick;
 
     @FXML
     private DatePicker											ChefReceptionDate;
@@ -131,8 +131,6 @@ public class ChefFieldController
     @FXML
     private Button													ChefSubmit;
 
-    @FXML
-    private MenuButton											ChefOrder;
 
     @FXML
     private RadioMenuItem										ChefFraise;
@@ -208,7 +206,8 @@ public class ChefFieldController
     private LineChart<Number, Number> ChartStorage;
     @FXML
     private ComboBox<String> MenuButton;
-
+    @FXML
+    private ComboBox<String> ChefOrder;
     @FXML
     private NumberAxis StockY;
 
@@ -234,6 +233,7 @@ public class ChefFieldController
         UpdateTabl();
         UpdateComboBox();
         UpdateComboBoxElement();
+        UpdateComboBoxOrder();
         UpdateTable();
 
         ContextMenu contextMenu=new ContextMenu();
@@ -317,6 +317,51 @@ public class ChefFieldController
         RefreshButton.setOnAction(event ->{
             AddData();
         });
+    }
+
+    private void UpdateComboBoxOrder() {
+        Connection con = null;
+        try {
+            con = DatabaseHandler.getDbConnection();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        ResultSet rs = null;
+
+        PreparedStatement prp = null;
+        try {
+            prp = con.prepareStatement("SELECT element FROM storagetable ");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            rs = prp.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        while (true)
+        {
+            try
+            {
+                if (!rs.next())
+                    break;
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try
+            {   ChefOrder.getItems().addAll(rs.getString("element"));
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     private void DrawChartFraise() {
@@ -448,7 +493,7 @@ public class ChefFieldController
                 e.printStackTrace();
             }
             try
-            {   menunames.getItems().addAll(rs.getString("element"));
+            {   MenuButton.getItems().addAll(rs.getString("element"));
             }
             catch (SQLException e)
             {
@@ -460,7 +505,7 @@ public class ChefFieldController
 
     private void AddData() {
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        LocalDate datee = datePicker.getValue();
+        LocalDate datee = pick.getValue();
         String elemnt =MenuButton.getValue().toString();
         int initial = Integer.parseInt(InitialQuantity.getText());
         int consumed = Integer.parseInt(ConsumedQuantity.getText());
@@ -508,7 +553,7 @@ public class ChefFieldController
                 e.printStackTrace();
             }
             try
-            {   menunames.getItems().addAll(rs.getString("name"));
+            {  menunames.getItems().addAll(rs.getString("name"));
             }
             catch (SQLException e)
             {

@@ -105,15 +105,8 @@
                                 <DatePicker fx:id="ChefReceptionDate" editable="false" layoutX="125.0" layoutY="142.0" prefHeight="26.0" prefWidth="195.0" promptText="reception date" />
                                 <TextField fx:id="ChefQuantity" layoutX="124.0" layoutY="230.0" prefHeight="26.0" prefWidth="196.0" promptText="Quantity" />
                                 <Button fx:id="ChefSubmit" layoutX="258.0" layoutY="334.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="282.0" style="-fx-background-color: #abc1be;" text="submit" />
-                                <MenuButton fx:id="ChefOrder" layoutX="125.0" layoutY="187.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="195.0" text="Order">
-                                    <items>
-                                        <RadioMenuItem fx:id="ChefFraise" mnemonicParsing="false" text="fraise" />
-                                        <RadioMenuItem fx:id="ChefPT" mnemonicParsing="false" text="pomme de terre" />
-                                        <RadioMenuItem fx:id="viande" mnemonicParsing="false" text="viande" />
-                                        <RadioMenuItem fx:id="autre" mnemonicParsing="false" text="autre" />
-                                    </items>
-                                </MenuButton>
                                 <Line endX="417.0" layoutX="282.0" startX="-100.0" />
+                        <ComboBox fx:id="ChefOrder" layoutX="125.0" layoutY="187.0" prefHeight="26.0" prefWidth="191.0" promptText="order" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -127,7 +120,7 @@
                                 <TextField fx:id="ConsumedQuantity" layoutX="352.0" layoutY="258.0" prefHeight="26.0" prefWidth="194.0" />
                                 <Button fx:id="RefreshButton" layoutX="375.0" layoutY="429.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="149.0" text="submit" />
                                 <TextField fx:id="OrderedQuantity" layoutX="352.0" layoutY="350.0" prefHeight="26.0" prefWidth="194.0" />
-                        <DatePicker layoutX="358.0" layoutY="122.0" promptText="datePicker" />
+                        <DatePicker fx:id="pick" layoutX="358.0" layoutY="122.0" />
                             </children>
                         </AnchorPane>
                     </content>
