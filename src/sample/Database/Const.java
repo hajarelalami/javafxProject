@@ -49,55 +49,14 @@ public class Const {
     public static final String Quantity_Table="quantitytable";
     //Column names
 
-    public static final String Quantity_Element="element";
     public static final String Quantity_Date="date";
+    public static final String Quantity_Element="element";
     public static final String Quantity_initial="quantiteinitial";
     public static final String Quantity_consumed="quantiteconsome";
     public static final String Quantity_ordered="quantitecommande";
-    public static final String Quantity_present="quantitepresent";
+    public static final String Quantity_present="quantitepresente";
 
-    public static final String Breakfast_Table="breakfast";
-    //Column names
 
-    public static final String Breakfast_fruit1="fruit1";
-    public static final String Breakfast_fruit2="fruit2";
-    public static final String Breakfast_fruit3="fruit3";
-    public static final String Breakfast_lait1="lait1";
-    public static final String Breakfast_lait2="lait2";
-    public static final String Breakfast_boisson="boisson";
-    public static final String Breakfast_cereal1="cereal1";
-    public static final String Breakfast_cereal2="cereal2";
-    public static final String Breakfast_name="name";
-
-    public static final String Lunch_Table="lunch";
-    //Column names
-
-    public static final String Lunch_gras1="gras";
-
-    public static final String Lunch_cereal="cereal";
-    public static final String Lunch_boisson="boisson";
-    public static final String Lunch_vvpolav="vvpolav";
-    public static final String Lunch_legume1="legume1";
-    public static final String Lunch_legume2="legume2";
-    public static final String Lunch_legume3="legume3";
-    public static final String Lunch_fruit1="fruit1";
-    public static final String Lunch_fruit2="fruit2";
-    public static final String Lunch_name="name";
-
-    public static final String Dinner_Table="dinner";
-    //Column names
-
-    public static final String Dinner_gras1="gras";
-
-    public static final String Dinner_cereal="cereal";
-    public static final String Dinner_boisson="boisson";
-    public static final String Dinner_vvpolav="vvpolav";
-    public static final String Dinner_legume1="legume1";
-    public static final String Dinner_legume2="legume2";
-    public static final String Dinner_legume3="legume3";
-    public static final String Dinner_fruit1="fruit1";
-    public static final String Dinner_fruit2="fruit2";
-    public static final String Dinner_name="name";
 
     public static final String Menu_Table="menutable";
     //Column names

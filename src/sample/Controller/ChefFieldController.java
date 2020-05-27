@@ -512,7 +512,7 @@ public class ChefFieldController
         int ordered = Integer.parseInt(OrderedQuantity.getText());
         int present = Integer.parseInt(InitialQuantity.getText())+Integer.parseInt(ConsumedQuantity.getText())-Integer.parseInt(OrderedQuantity.getText());
 
-        Quantity quantity= new Quantity(datee,elemnt,initial,consumed,present,ordered,present);
+        Quantity quantity = new Quantity(datee,elemnt,initial,consumed,ordered,present);
 
 
         databaseHandler.getQuantity(quantity);
