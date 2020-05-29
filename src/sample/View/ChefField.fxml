@@ -31,10 +31,10 @@
                             <children>
                                 <TableView fx:id="menushown" layoutX="85.0" layoutY="117.0" prefHeight="383.0" prefWidth="731.0" style="-fx-background-color: #FFFFFF;">
                                     <columns>
-                                        <TableColumn fx:id="PatientId" prefWidth="175.0" style="-fx-background-color: #FFFFFF;" text="Patient ID" />
-                                        <TableColumn fx:id="patientbreakfast" prefWidth="185.0" style="-fx-background-color: #FFFFFF;" text="Breakfast" />
-                                        <TableColumn fx:id="patientLunch" prefWidth="185.0" style="-fx-background-color: #FFFFFF;" text="Lunch" />
-                                        <TableColumn fx:id="patientDinner" prefWidth="185.0" style="-fx-background-color: #FFFFFF;" text="Dinner" />
+                                        <TableColumn fx:id="PatientId" prefWidth="175.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Patient ID" />
+                                        <TableColumn fx:id="patientbreakfast" prefWidth="185.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Breakfast" />
+                                        <TableColumn fx:id="patientLunch" prefWidth="185.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Lunch" />
+                                        <TableColumn fx:id="patientDinner" prefWidth="185.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Dinner" />
                                     </columns>
                            <effect>
                               <DropShadow />
@@ -52,10 +52,13 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <TextField fx:id="searchbox" alignment="TOP_CENTER" layoutX="319.0" layoutY="517.0" prefHeight="26.0" prefWidth="264.0" promptText="Search">
+                        <TextField fx:id="searchbox" alignment="TOP_CENTER" layoutX="319.0" layoutY="517.0" prefHeight="26.0" prefWidth="264.0" promptText="Search" style="-fx-text-box-border: transparent;">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                         </TextField>
                             </children>
                         </AnchorPane>
@@ -110,10 +113,10 @@
                             <children>
                                 <TableView fx:id="StorageTable" layoutX="25.0" layoutY="14.0" onMouseClicked="#getSelected" onMouseEntered="#getSelected" prefHeight="410.0" prefWidth="850.0">
                                     <columns>
-                                        <TableColumn fx:id="StrorageIDElement" prefWidth="170.0" style="-fx-background-color: #FFFFFF;" text="Idelement" />
-                                        <TableColumn fx:id="StrorageElement" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" text="Element" />
-                                        <TableColumn fx:id="StorageZone" prefWidth="243.0" style="-fx-background-color: #FFFFFF;" text="Storage zone" />
-                                        <TableColumn fx:id="StorageType" prefWidth="256.0" style="-fx-background-color: #FFFFFF;" text="Storage type" />
+                                        <TableColumn fx:id="StrorageIDElement" prefWidth="170.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Idelement" />
+                                        <TableColumn fx:id="StrorageElement" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Element" />
+                                        <TableColumn fx:id="StorageZone" prefWidth="243.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Storage zone" />
+                                        <TableColumn fx:id="StorageType" prefWidth="256.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Storage type" />
                                     </columns>
                            <effect>
                               <DropShadow />
