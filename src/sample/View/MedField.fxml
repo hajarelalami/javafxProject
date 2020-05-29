@@ -12,6 +12,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -61,14 +63,14 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" />
                                             </opaqueInsets>
                                         </VBox>
+                              <ImageView fitHeight="71.0" fitWidth="95.0" layoutX="48.0" layoutY="31.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/g1743-4-0-3-3%20(1).png" />
+                                 </image>
+                              </ImageView>
                                     </children>
                                 </AnchorPane>
                                 <Button fx:id="logout" layoutX="816.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #abd1b5;" text="Log out" />
-                                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="-63.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Patients field" textAlignment="CENTER" wrappingWidth="295.13671875">
-                                    <font>
-                                        <Font name="Bell MT" size="27.0" />
-                                    </font>
-                                </Text>
                                 <TableView fx:id="patientsTable" layoutX="186.0" layoutY="110.0" onMouseClicked="#getSelected" onMouseEntered="#getSelected" prefHeight="364.0" prefWidth="706.0" style="-fx-background-color: #FFFFFF;">
                                     <columns>
                                         <TableColumn fx:id="PatientID" editable="false" minWidth="15.0" prefWidth="70.0" style="-fx-text-fill: black; -fx-background-color: #FFFFFF;" text="Patient ID" />
