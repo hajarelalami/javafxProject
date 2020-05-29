@@ -11,59 +11,82 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #abd1b5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.LoginController">
     <children>
-        <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="191.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" styleClass="stage.resizableProperty().setValue(Boolean.FALSE)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="191.0" AnchorPane.topAnchor="0.0">
             <children>
-                <ImageView fitHeight="433.0" fitWidth="404.0" layoutX="-37.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="-37.0" AnchorPane.rightAnchor="342.0" AnchorPane.topAnchor="88.0">
+                <ImageView fitHeight="433.0" fitWidth="404.0" layoutX="-37.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="-37.0" AnchorPane.rightAnchor="342.0" AnchorPane.topAnchor="98.0">
                     <image>
                         <Image url="@../Assets/d80c9bc2cb0116854839390457a41106.png" />
                     </image>
                 </ImageView>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="289.0" layoutY="65.0" prefHeight="271.0" prefWidth="320.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="65.0">
+        <AnchorPane layoutX="362.0" layoutY="106.0" prefHeight="388.0" prefWidth="404.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="134.0" AnchorPane.topAnchor="106.0">
             <effect>
                 <DropShadow />
             </effect>
             <children>
-                <TextField fx:id="LoginUsername" layoutX="38.0" layoutY="46.0" prefHeight="25.0" prefWidth="243.0" promptText="username" style="-fx-background-radius: 25PX;" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="39.0">
-                    <font>
-                        <Font name="System Italic" size="12.0" />
-                    </font>
-                </TextField>
-                <Button fx:id="LoginButton" layoutX="49.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: #abd1b5;" text="Sign in" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="48.0" />
-                <PasswordField fx:id="LoginPassword" layoutX="37.0" layoutY="84.0" prefHeight="25.0" prefWidth="243.0" promptText="password" style="-fx-background-radius: 25PX;" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="40.0" />
-                <HBox alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="229.0" prefHeight="71.0" prefWidth="205.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="22.0">
-                    <padding>
+            <VBox layoutX="50.0" layoutY="48.0" prefHeight="60.0" prefWidth="304.0" spacing="10.0">
+               <children>
+                      <TextField fx:id="LoginUsername" prefHeight="25.0" prefWidth="243.0" promptText="Username" style="-fx-background-radius: 25PX;">
+                          <font>
+                              <Font name="System Italic" size="12.0" />
+                          </font>
+                      </TextField>
+                      <PasswordField fx:id="LoginPassword" prefHeight="25.0" prefWidth="243.0" promptText="Password" style="-fx-background-radius: 25PX;" />
+               </children>
+            </VBox>
+                <Button fx:id="LoginButton" layoutX="102.0" layoutY="207.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #abd1b5;" text="Sign in" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="92.0" />
+            <HBox alignment="BOTTOM_CENTER" layoutX="23.0" layoutY="259.0" prefHeight="71.0" prefWidth="205.0" spacing="20.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="13.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Need an account ?" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                    </padding>
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Need an account ?" HBox.hgrow="ALWAYS">
-                            <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </HBox.margin>
-                        </Text>
-                        <Button fx:id="registerbutton" mnemonicParsing="false" style="-fx-background-radius: 25PX;" text="Sign up">
-                            <HBox.margin>
-                                <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                            </HBox.margin>
-                            <padding>
-                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                            </padding>
-                        </Button>
-                    </children>
-                </HBox>
-                <RadioButton fx:id="signinradio1" layoutX="129.0" layoutY="127.0" mnemonicParsing="false" selected="true" text="Doctor">
-                    <toggleGroup>
+                     </HBox.margin>
+                  </Text>
+                  <Button fx:id="registerbutton" mnemonicParsing="false" prefHeight="21.0" prefWidth="52.0" style="-fx-background-radius: 25PX; -fx-background-color: #FFFFFF;" text="Sign up">
+                     <HBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="86.0" layoutY="141.0" spacing="30.0">
+               <children>
+                  <RadioButton fx:id="signinradio1" mnemonicParsing="false" selected="true" text="Doctor">
+                     <toggleGroup>
                         <ToggleGroup fx:id="signinradio" />
-                    </toggleGroup>
-                </RadioButton>
-                <RadioButton fx:id="signinradio2" layoutX="236.0" layoutY="127.0" mnemonicParsing="false" text="Chef" toggleGroup="$signinradio" />
-                <RadioButton fx:id="signinradio3" layoutX="338.0" layoutY="127.0" mnemonicParsing="false" text="Salesman" toggleGroup="$signinradio" />
+                     </toggleGroup>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="signinradio2" mnemonicParsing="false" text="Chef" toggleGroup="$signinradio">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="signinradio3" mnemonicParsing="false" text="Salesman" toggleGroup="$signinradio">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </HBox>
             </children>
         </AnchorPane>
     </children>
