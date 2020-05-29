@@ -141,6 +141,7 @@ public class RegisterController
         }
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
 
@@ -162,6 +163,7 @@ public class RegisterController
         }
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
 
@@ -183,6 +185,7 @@ public class RegisterController
         }
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
 
