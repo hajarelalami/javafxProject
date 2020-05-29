@@ -1,6 +1,4 @@
 package sample.Controller;
-
-
 import static sample.Database.DatabaseHandler.getDbConnection;
 
 import java.io.IOException;
@@ -63,6 +61,9 @@ public class SalesFieldController
     private TextField salesPw;
 
     @FXML
+    private Button ORDERSUPDATE;
+
+    @FXML
     private Button ordersSave;
     @FXML
     private Button saleslogout;
@@ -76,6 +77,10 @@ public class SalesFieldController
         oblista = FXCollections.observableArrayList();
         orderstable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         databaseHandler = new DatabaseHandler();
+        ORDERSUPDATE.setOnAction(event -> {
+            oblista.removeAll(oblista);
+            UpdateTable();
+        });
         UpdateTable();
         showInfo();
         saleslogout.setOnAction(event -> {
@@ -98,6 +103,9 @@ public class SalesFieldController
         });
         ordersSave.setOnAction(event -> {
             SaveP();
+        });
+        ORDERSUPDATE.setOnAction(event -> {
+            UpdateTable();
         });
     }
 
