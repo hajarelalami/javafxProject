@@ -1,5 +1,4 @@
 package sample.Controller;
-
 import static sample.Database.DatabaseHandler.getDbConnection;
 
 import java.net.URL;

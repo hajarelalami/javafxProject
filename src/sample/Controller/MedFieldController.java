@@ -1,5 +1,4 @@
 package sample.Controller;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -13,6 +12,22 @@ import java.util.function.Predicate;
 
 import javax.swing.JOptionPane;
 
+<<<<<<< HEAD
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.function.Predicate;
+
+import javax.swing.JOptionPane;
+
+=======
+>>>>>>> cacad4452844dad8d16a9ba123fbbceef92d9fa2
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -172,6 +187,7 @@ public class MedFieldController
 
     @FXML
     private ComboBox<String>						fruit3;
+<<<<<<< HEAD
 
     @FXML
     private ComboBox<String>						cereal1;
@@ -179,6 +195,15 @@ public class MedFieldController
     private Button Refreshbutton;
 
     @FXML
+=======
+
+    @FXML
+    private ComboBox<String>						cereal1;
+    @FXML
+    private Button Refreshbutton;
+
+    @FXML
+>>>>>>> cacad4452844dad8d16a9ba123fbbceef92d9fa2
     private Button											logout;
     ObservableList<Table>								oblist;
     private DatabaseHandler							databaseHandler;
@@ -323,8 +348,12 @@ public class MedFieldController
 
         if (
                 (//menus.equalsIgnoreCase("breakfast") &&
+<<<<<<< HEAD
                         this.databaseHandler.getBreakfastNames().contains(name1)) ||
                         menus.equalsIgnoreCase("lunch") && this.databaseHandler.getLunchNames().contains(name1) || menus.equalsIgnoreCase("dinner") && this.databaseHandler.getDinnerNames().contains(name1)
+=======
+                        this.databaseHandler.getBreakfastNames().contains(name1)) || menus.equalsIgnoreCase("lunch") && this.databaseHandler.getLunchNames().contains(name1) || menus.equalsIgnoreCase("dinner") && this.databaseHandler.getDinnerNames().contains(name1)
+>>>>>>> cacad4452844dad8d16a9ba123fbbceef92d9fa2
         )
 
         {
@@ -931,4 +960,8 @@ public class MedFieldController
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cacad4452844dad8d16a9ba123fbbceef92d9fa2

@@ -25,7 +25,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="menushown" layoutX="63.0" layoutY="14.0" prefHeight="335.0" prefWidth="738.0">
+                                <TableView fx:id="menushown" layoutX="63.0" layoutY="14.0" prefHeight="426.0" prefWidth="738.0">
                                     <columns>
                                         <TableColumn fx:id="PatientId" prefWidth="175.0" text="patientid" />
                                         <TableColumn fx:id="patientbreakfast" prefWidth="185.0" text="breakfast" />
@@ -33,6 +33,12 @@
                                         <TableColumn fx:id="patientDinner" prefWidth="185.0" text="dinner" />
                                     </columns>
                                 </TableView>
+                        <TextField fx:id="searchbox" layoutX="331.0" layoutY="486.0" prefHeight="26.0" prefWidth="241.0" />
+                        <Label layoutX="113.0" layoutY="491.0" text="search box">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
                             </children>
                         </AnchorPane>
                     </content>
