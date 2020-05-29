@@ -10,6 +10,18 @@ import java.time.ZoneId;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
+import static sample.Database.DatabaseHandler.getDbConnection;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.List;
+import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -77,10 +89,6 @@ public class SalesFieldController
         oblista = FXCollections.observableArrayList();
         orderstable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         databaseHandler = new DatabaseHandler();
-        ORDERSUPDATE.setOnAction(event -> {
-            oblista.removeAll(oblista);
-            UpdateTable();
-        });
         UpdateTable();
         showInfo();
         saleslogout.setOnAction(event -> {
@@ -105,6 +113,7 @@ public class SalesFieldController
             SaveP();
         });
         ORDERSUPDATE.setOnAction(event -> {
+            oblista.removeAll(oblista);
             UpdateTable();
         });
     }

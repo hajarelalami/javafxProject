@@ -373,4 +373,30 @@ public class DatabaseHandler extends Configs
 
     }
 
+
+    public List<String> getDinnerNames()
+    {
+        ResultSet resultSet = null;
+        List<String> list = new ArrayList();
+        String query = "SELECT name  FROM menutable Where plat = 'dinner';";
+
+        PreparedStatement preparedStatement;
+        try
+        {
+            preparedStatement = getDbConnection().prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next())
+            {
+                list.add(resultSet.getString("name"));
+            }
+        }
+        catch (ClassNotFoundException | SQLException e)
+        {
+        }
+
+        return list;
+
+    }
+
 }

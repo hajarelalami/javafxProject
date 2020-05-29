@@ -140,6 +140,7 @@ public class LoginController
             }
             Parent root = loader.getRoot();
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
@@ -177,6 +178,7 @@ public class LoginController
         }
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.showAndWait();
 
@@ -198,6 +200,7 @@ public class LoginController
         }
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.showAndWait();
 
@@ -219,6 +222,7 @@ public class LoginController
         }
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.showAndWait();
 

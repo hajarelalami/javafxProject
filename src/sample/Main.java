@@ -11,6 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("View/ChefField.fxml"));
         primaryStage.setTitle("Active");
+        primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 900, 600));
         primaryStage.show();
     }

@@ -322,8 +322,7 @@ public class MedFieldController
 
         if (
                 (//menus.equalsIgnoreCase("breakfast") &&
-                        this.databaseHandler.getBreakfastNames().contains(name1)) ||
-                        menus.equalsIgnoreCase("lunch") && this.databaseHandler.getLunchNames().contains(name1) || menus.equalsIgnoreCase("dinner") && this.databaseHandler.getDinnerNames().contains(name1)
+                        this.databaseHandler.getBreakfastNames().contains(name1)) || menus.equalsIgnoreCase("lunch") && this.databaseHandler.getLunchNames().contains(name1) || menus.equalsIgnoreCase("dinner") && this.databaseHandler.getDinnerNames().contains(name1)
         )
 
         {
