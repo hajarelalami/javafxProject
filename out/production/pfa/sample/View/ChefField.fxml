@@ -13,10 +13,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.chart.CategoryAxis?>
 <AnchorPane maxWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ChefFieldController">
     <children>
         <TabPane prefHeight="600.0" prefWidth="900.0">
@@ -25,119 +30,177 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="menushown" layoutX="63.0" layoutY="14.0" prefHeight="426.0" prefWidth="738.0">
+                                <TableView fx:id="menushown" layoutX="85.0" layoutY="117.0" prefHeight="383.0" prefWidth="731.0" style="-fx-background-color: #FFFFFF;">
                                     <columns>
-                                        <TableColumn fx:id="PatientId" prefWidth="175.0" text="patientid" />
-                                        <TableColumn fx:id="patientbreakfast" prefWidth="185.0" text="breakfast" />
-                                        <TableColumn fx:id="patientLunch" prefWidth="185.0" text="lunch" />
-                                        <TableColumn fx:id="patientDinner" prefWidth="185.0" text="dinner" />
+                                        <TableColumn fx:id="PatientId" prefWidth="175.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Patient ID" />
+                                        <TableColumn fx:id="patientbreakfast" prefWidth="185.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Breakfast" />
+                                        <TableColumn fx:id="patientLunch" prefWidth="185.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Lunch" />
+                                        <TableColumn fx:id="patientDinner" prefWidth="185.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Dinner" />
                                     </columns>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                                 </TableView>
-                        <TextField fx:id="searchbox" layoutX="331.0" layoutY="486.0" prefHeight="26.0" prefWidth="241.0" />
-                        <Label layoutX="113.0" layoutY="491.0" text="search box">
+                        <AnchorPane prefHeight="108.0" prefWidth="900.0" style="-fx-background-color: #ABC1BE;">
+                           <children>
+                              <ImageView fitHeight="105.0" fitWidth="120.0" layoutX="390.0" layoutY="3.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/g1743-4-0-3-3%20(1).png" />
+                                 </image>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <TextField fx:id="searchbox" alignment="TOP_CENTER" layoutX="319.0" layoutY="517.0" prefHeight="26.0" prefWidth="264.0" promptText="Search" style="-fx-text-box-border: transparent;">
                            <font>
-                              <Font size="19.0" />
+                              <Font name="System Bold" size="12.0" />
                            </font>
-                        </Label>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </TextField>
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
                 <Tab closable="false" text="Menu details">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                             <children>
-                                <ComboBox fx:id="menunames" layoutX="354.0" layoutY="65.0" prefWidth="150.0" promptText="menu names" />
-                                <TextField fx:id="gras1" layoutX="67.0" layoutY="136.0" text="fat" />
-                                <TextField fx:id="fr1" layoutX="67.0" layoutY="248.0" text="fruit" />
-                                <TextField fx:id="leg1" layoutX="67.0" layoutY="336.0" text="vegetables" />
-                                <TextField fx:id="cereal" layoutX="67.0" layoutY="428.0" text="cereals products" />
-                                <TextField fx:id="gras2" layoutX="355.0" layoutY="136.0" text="fat" />
-                                <TextField fx:id="fr2" layoutX="355.0" layoutY="248.0" text="fruit" />
-                                <TextField fx:id="leg2" layoutX="355.0" layoutY="336.0" text="vegetables" />
-                                <TextField fx:id="cereal1" layoutX="355.0" layoutY="428.0" text="cereals products" />
-                                <TextField fx:id="boi" layoutX="639.0" layoutY="136.0" text="drink" />
-                                <TextField fx:id="fr3" layoutX="647.0" layoutY="248.0" text="fruit" />
-                                <TextField fx:id="leg3" layoutX="647.0" layoutY="336.0" text="vegetables" />
-                                <TextField fx:id="vvpolav" layoutX="647.0" layoutY="428.0" text="vvpolav" />
+                        <AnchorPane layoutX="36.0" layoutY="102.0" prefHeight="368.0" prefWidth="829.0" style="-fx-background-color: #abc1be; -fx-background-radius: 25;">
+                           <children>
+                              <VBox layoutX="340.0" layoutY="128.0" spacing="10.0">
+                                 <children>
+                                            <TextField fx:id="gras2" text="Fat" />
+                                            <TextField fx:id="fr2" text="Fruit" />
+                                            <TextField fx:id="leg2" text="Vegetable" />
+                                            <TextField fx:id="cereal1" text="Cereal product" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="45.0" layoutY="128.0" spacing="10.0">
+                                 <children>
+                                            <TextField fx:id="gras1" text="Fat" />
+                                            <TextField fx:id="fr1" text="Fruit" />
+                                            <TextField fx:id="leg1" text="Vegetable" />
+                                            <TextField fx:id="cereal" text="Cereal product" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="637.0" layoutY="128.0" spacing="10.0">
+                                 <children>
+                                            <TextField fx:id="boi" text="Drink" />
+                                            <TextField fx:id="fr3" text="Fruit" />
+                                            <TextField fx:id="leg3" text="Vegetable" />
+                                            <TextField fx:id="vvpolav" text="Meat" />
+                                 </children>
+                              </VBox>
+                                      <ComboBox fx:id="menunames" layoutX="340.0" layoutY="68.0" prefWidth="150.0" promptText="Menu" style="-fx-background-color: #FFFFFF;">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </ComboBox>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </AnchorPane>
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab closable="false" text="Gestion des Achats">
+                <Tab closable="false" text="Storage">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="900.0">
                             <children>
-                                <TableView fx:id="StorageTable" layoutX="10.0" layoutY="14.0" onMouseClicked="#getSelected" onMouseEntered="#getSelected" prefHeight="410.0" prefWidth="850.0">
+                                <TableView fx:id="StorageTable" layoutX="25.0" layoutY="14.0" onMouseClicked="#getSelected" onMouseEntered="#getSelected" prefHeight="410.0" prefWidth="850.0">
                                     <columns>
-                                        <TableColumn fx:id="StrorageIDElement" prefWidth="170.0" text="idelement" />
-                                        <TableColumn fx:id="StrorageElement" prefWidth="180.0" text="element" />
-                                        <TableColumn fx:id="StorageZone" prefWidth="243.0" text="storage zone" />
-                                        <TableColumn fx:id="StorageType" prefWidth="256.0" text="storage type" />
+                                        <TableColumn fx:id="StrorageIDElement" prefWidth="170.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Idelement" />
+                                        <TableColumn fx:id="StrorageElement" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Element" />
+                                        <TableColumn fx:id="StorageZone" prefWidth="243.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Storage zone" />
+                                        <TableColumn fx:id="StorageType" prefWidth="256.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Storage type" />
                                     </columns>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                                 </TableView>
-                                <MenuButton fx:id="MenuZone" layoutX="310.0" layoutY="462.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Zone">
-                                    <items>
-                                        <RadioMenuItem fx:id="ZoneA" mnemonicParsing="false" text="zoneA" />
-                                        <RadioMenuItem fx:id="ZoneB" mnemonicParsing="false" text="zoneB" />
-                                    </items>
-                                </MenuButton>
-                                <MenuButton fx:id="MenuType" layoutX="613.0" layoutY="462.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Type">
-                                    <items>
-                                        <RadioMenuItem fx:id="TypeFroid" mnemonicParsing="false" text="froid" />
-                                        <RadioMenuItem fx:id="TypeHumide" mnemonicParsing="false" text="humide" />
-                                    </items>
-                                </MenuButton>
-                                <Button fx:id="StorageAddElement" layoutX="340.0" layoutY="514.0" mnemonicParsing="false" text="Add element" />
-                                <Button fx:id="StorageModifyButton" layoutX="471.0" layoutY="514.0" mnemonicParsing="false" text="Modify" />
-                                <Button fx:id="StorageDeleteButton" layoutX="252.0" layoutY="514.0" mnemonicParsing="false" text="Delete" />
-                                <TextField fx:id="TextidElement" layoutX="28.0" layoutY="462.0" prefHeight="26.0" prefWidth="106.0" text="id element" />
-                                <TextField fx:id="Textelement" layoutX="154.0" layoutY="463.0" prefHeight="26.0" prefWidth="104.0" text="element" />
-                                <TextField fx:id="Textstoragezone" layoutX="435.0" layoutY="463.0" text="zone" />
-                                <TextField fx:id="Textstoragetype" layoutX="737.0" layoutY="464.0" prefHeight="26.0" prefWidth="100.0" text="type" />
+                        <HBox layoutX="65.0" layoutY="451.0" spacing="20.0">
+                           <children>
+                                      <TextField fx:id="TextidElement" prefHeight="26.0" prefWidth="106.0" promptText="ID element" />
+                                      <TextField fx:id="Textelement" prefHeight="26.0" prefWidth="104.0" promptText="Element " />
+                                      <MenuButton fx:id="MenuZone" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Zone">
+                                          <items>
+                                              <RadioMenuItem fx:id="ZoneA" mnemonicParsing="false" text="zoneA" />
+                                              <RadioMenuItem fx:id="ZoneB" mnemonicParsing="false" text="zoneB" />
+                                          </items>
+                                      </MenuButton>
+                                      <TextField fx:id="Textstoragezone" promptText="Zone" />
+                                      <MenuButton fx:id="MenuType" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Type">
+                                          <items>
+                                              <RadioMenuItem fx:id="TypeFroid" mnemonicParsing="false" text="froid" />
+                                              <RadioMenuItem fx:id="TypeHumide" mnemonicParsing="false" text="humide" />
+                                          </items>
+                                      </MenuButton>
+                                      <TextField fx:id="Textstoragetype" prefHeight="26.0" prefWidth="100.0" promptText="Type" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="340.0" layoutY="512.0" spacing="15.0">
+                           <children>
+                                      <Button fx:id="StorageDeleteButton" mnemonicParsing="false" text="Delete" />
+                                      <Button fx:id="StorageAddElement" mnemonicParsing="false" text="Add element" />
+                                      <Button fx:id="StorageModifyButton" mnemonicParsing="false" text="Modify" />
+                           </children>
+                        </HBox>
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab closable="false" text="Gestion des commandes">
+                <Tab closable="false" text="Orders">
                     <content>
                         <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
                             <children>
-                                <Label layoutX="27.0" layoutY="14.0" prefHeight="34.0" prefWidth="134.0" text="New Order">
+                                <Label alignment="TOP_CENTER" layoutX="374.0" layoutY="82.0" prefHeight="34.0" prefWidth="134.0" text="New Order">
                                     <font>
-                                        <Font name="Arial" size="18.0" />
+                                        <Font name="Bell MT Bold" size="21.0" />
                                     </font>
                                 </Label>
-                                <DatePicker fx:id="ChefOrderDate" editable="false" layoutX="125.0" layoutY="101.0" prefHeight="25.0" prefWidth="195.0" promptText="order date" />
-                                <DatePicker fx:id="ChefReceptionDate" editable="false" layoutX="125.0" layoutY="142.0" prefHeight="26.0" prefWidth="195.0" promptText="reception date" />
-                                <TextField fx:id="ChefQuantity" layoutX="124.0" layoutY="230.0" prefHeight="26.0" prefWidth="196.0" promptText="Quantity" />
-                                <Button fx:id="ChefSubmit" layoutX="258.0" layoutY="334.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="282.0" style="-fx-background-color: #abc1be;" text="submit" />
-                                <Line endX="417.0" layoutX="282.0" startX="-100.0" />
-                        <ComboBox fx:id="ChefOrder" layoutX="125.0" layoutY="187.0" prefHeight="26.0" prefWidth="191.0" promptText="order" />
+                        <VBox layoutX="340.0" layoutY="147.0" spacing="12.0">
+                           <children>
+                                      <DatePicker fx:id="ChefOrderDate" editable="false" prefHeight="25.0" prefWidth="202.0" promptText="Order date" />
+                                      <DatePicker fx:id="ChefReceptionDate" editable="false" prefHeight="26.0" prefWidth="202.0" promptText="Reception date" />
+                              <ComboBox fx:id="ChefOrder" prefHeight="26.0" prefWidth="202.0" promptText="Order" />
+                                      <TextField fx:id="ChefQuantity" prefHeight="26.0" prefWidth="202.0" promptText="Quantity" />
+                           </children>
+                        </VBox>
+                                <Button fx:id="ChefSubmit" layoutX="311.0" layoutY="336.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="260.0" style="-fx-background-color: #abc1be;" text="Submit" />
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="gestions de provisions">
+                <Tab closable="false" text="gestions de provisions">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <ComboBox fx:id="MenuButton" layoutX="374.0" layoutY="64.0" prefWidth="150.0" promptText="elements" />
-                                <TextField fx:id="InitialQuantity" layoutX="352.0" layoutY="166.0" prefHeight="26.0" prefWidth="194.0" />
-                                <TextField fx:id="ConsumedQuantity" layoutX="352.0" layoutY="258.0" prefHeight="26.0" prefWidth="194.0" />
-                                <Button fx:id="RefreshButton" layoutX="375.0" layoutY="429.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="149.0" text="submit" />
-                                <TextField fx:id="OrderedQuantity" layoutX="352.0" layoutY="350.0" prefHeight="26.0" prefWidth="194.0" />
-                        <DatePicker fx:id="pick" layoutX="358.0" layoutY="122.0" />
+                        <VBox layoutX="352.0" layoutY="64.0" spacing="15.0">
+                           <children>
+                                      <ComboBox fx:id="MenuButton" prefHeight="25.0" prefWidth="197.0" promptText="Elements" />
+                              <DatePicker fx:id="pick" prefHeight="25.0" prefWidth="195.0" />
+                                      <TextField fx:id="InitialQuantity" prefHeight="26.0" prefWidth="194.0" />
+                                      <TextField fx:id="ConsumedQuantity" prefHeight="26.0" prefWidth="194.0" />
+                                      <TextField fx:id="OrderedQuantity" prefHeight="26.0" prefWidth="194.0" />
+                           </children>
+                        </VBox>
+                                <Button fx:id="RefreshButton" layoutX="376.0" layoutY="306.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="149.0" text="Submit" />
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Gestions de stocks">
+                <Tab closable="false" text="Storage chart">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <LineChart fx:id="ChartStorage" layoutX="75.0" layoutY="88.0" prefHeight="446.0" prefWidth="725.0" title="Storage">
                                     <xAxis>
-                                        <NumberAxis label="date" side="BOTTOM" />
+                                        <CategoryAxis label="date" side="BOTTOM" />
                                     </xAxis>
                                     <yAxis>
                                         <NumberAxis fx:id="StockY" label="stock" side="LEFT" />
