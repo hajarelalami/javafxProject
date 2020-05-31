@@ -206,7 +206,7 @@ public class ChefFieldController
     private TextField OrderedQuantity;
 
     @FXML
-    private LineChart<Number, Number> ChartStorage;
+    private LineChart<LocalDate, Number> ChartStorage;
     @FXML
     private ComboBox<String> MenuButton;
     @FXML
@@ -389,7 +389,7 @@ public class ChefFieldController
     }
 
     private void DrawChartFraise() {
-        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        XYChart.Series<LocalDate, Number> series = new XYChart.Series<>();
         Connection con = null;
         try {
             con = DatabaseHandler.getDbConnection();
@@ -424,7 +424,7 @@ public class ChefFieldController
                 e.printStackTrace();
             }
             try
-            {   series.getData().add(new XYChart.Data(rs.getInt(1), rs.getInt(2)));
+            {   series.getData().add(new XYChart.Data(rs.getDate(1), rs.getInt(2)));
             }
             catch (SQLException e)
             {
@@ -435,8 +435,8 @@ public class ChefFieldController
         }
     }
 
-    private void DrawChartPoisson() {
-        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+   private void DrawChartPoisson() {
+        XYChart.Series<LocalDate, Number> series = new XYChart.Series<>();
         Connection con = null;
         try {
             con = DatabaseHandler.getDbConnection();
@@ -471,7 +471,7 @@ public class ChefFieldController
                 e.printStackTrace();
             }
             try
-            {   series.getData().add(new XYChart.Data(rs.getInt(1), rs.getInt(2)));
+            {   series.getData().add(new XYChart.Data(rs.getDate(1), rs.getInt(2)));
             }
             catch (SQLException e)
             {
@@ -481,6 +481,7 @@ public class ChefFieldController
 
         }
     }
+
 
     private void UpdateComboBoxElement() {
         Connection con = null;
