@@ -1,6 +1,7 @@
 package sample.Controller;
 import static sample.Database.DatabaseHandler.getDbConnection;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,6 +40,9 @@ public class ChefFieldController
 {
     @FXML
     private ComboBox<String> menunames;
+
+    @FXML
+    private Button logs;
 
     @FXML
     private TextField gras1;
@@ -315,6 +319,27 @@ public class ChefFieldController
         });
         RefreshButton.setOnAction(event ->{
             AddData();
+        });
+        logs.setOnAction(event ->{
+            LoginController.setUserConnectedId(null);
+            logout.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/Login.fxml"));
+            try
+            {
+                loader.load();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
         });
     }
 
