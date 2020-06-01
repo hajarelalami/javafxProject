@@ -8,9 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -202,7 +204,7 @@ public class ChefFieldController
     private TextField OrderedQuantity;
 
     @FXML
-    private LineChart<LocalDate, Number> ChartStorage;
+    private LineChart<Date, Number> ChartStorage;
     @FXML
     private ComboBox<String> MenuButton;
     @FXML
@@ -364,7 +366,7 @@ public class ChefFieldController
     }
 
     private void DrawChartFraise() {
-        XYChart.Series<LocalDate, Number> series = new XYChart.Series<>();
+        XYChart.Series<Date, Number> series = new XYChart.Series<>();
         Connection con = null;
         try {
             con = DatabaseHandler.getDbConnection();
@@ -411,7 +413,7 @@ public class ChefFieldController
     }
 
    private void DrawChartPoisson() {
-        XYChart.Series<LocalDate, Number> series = new XYChart.Series<>();
+        XYChart.Series<Date, Number> series = new XYChart.Series<>();
         Connection con = null;
         try {
             con = DatabaseHandler.getDbConnection();
