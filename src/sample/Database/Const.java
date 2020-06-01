@@ -72,7 +72,7 @@ public class Const {
     public static final String Menu_legume2="leg2";
     public static final String Menu_legume3="leg3";
     public static final String Menu_vvpolav="vvpolav";
-    public static final String Menu_boisson="boi";
+    public static final String Menu_boisson="bois";
     public static final String Menu_name="name";
 
 }

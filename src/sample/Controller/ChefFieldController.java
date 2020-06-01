@@ -13,6 +13,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -29,6 +32,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import sample.Database.DatabaseHandler;
 import sample.Model.MenuTable;
 import sample.Model.OrderTable;
@@ -324,7 +328,7 @@ public class ChefFieldController
         });
         logs.setOnAction(event ->{
             LoginController.setUserConnectedId(null);
-            logout.getScene().getWindow().hide();
+            logs.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/Login.fxml"));
             try
