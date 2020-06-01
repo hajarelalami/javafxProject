@@ -19,9 +19,9 @@
     <children>
         <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" styleClass="stage.resizableProperty().setValue(Boolean.FALSE)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="191.0" AnchorPane.topAnchor="0.0">
             <children>
-                <ImageView fitHeight="433.0" fitWidth="404.0" layoutX="-37.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="-37.0" AnchorPane.rightAnchor="342.0" AnchorPane.topAnchor="98.0">
+                <ImageView fitHeight="215.0" fitWidth="242.0" layoutX="48.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="178.07789611816406" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="419.0" AnchorPane.topAnchor="211.0">
                     <image>
-                        <Image url="@../Assets/d80c9bc2cb0116854839390457a41106.png" />
+                        <Image url="@../Assets/g1691-1.png" />
                     </image>
                 </ImageView>
             </children>

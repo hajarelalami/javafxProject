@@ -51,6 +51,10 @@
                                     <DropShadow />
                                  </effect>
                               </ImageView>
+<<<<<<< HEAD
+                              <Button fx:id="logs" layoutX="821.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="Log out" />
+=======
+>>>>>>> 2864db1186a503b179ec5e71b10f744df6290167
                            </children>
                         </AnchorPane>
                         <TextField fx:id="searchbox" alignment="TOP_CENTER" layoutX="319.0" layoutY="517.0" prefHeight="26.0" prefWidth="264.0" promptText="Search" style="-fx-text-box-border: transparent;">

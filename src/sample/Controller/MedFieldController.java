@@ -261,6 +261,7 @@ public class MedFieldController
             }
             Parent root = loader.getRoot();
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.show();
 
@@ -328,6 +329,7 @@ public class MedFieldController
         )
 
         {
+            JOptionPane.showMessageDialog(null, "This name is already taken ");
             System.out.println("Add shaker");
 
         }
