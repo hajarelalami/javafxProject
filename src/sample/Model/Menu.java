@@ -1,4 +1,5 @@
 package sample.Model;
+
 public class Menu {
     String plat,gras,gras1,fruit1,fruit2,fruit3,cereal1,cereal2,leg1,leg2,leg3,boi,vvpolav,name;
 
