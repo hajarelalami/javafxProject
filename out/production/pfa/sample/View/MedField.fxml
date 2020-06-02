@@ -118,7 +118,7 @@
                                             <children>
                                                 <TextField fx:id="medFName" />
                                                 <TextField fx:id="medLName" />
-                                                <TextField fx:id="medUsername" disable="true" />
+                                                <TextField fx:id="medUsername" editable="false" />
                                                 <TextField fx:id="medUsername1" promptText="new username" />
                                             </children>
                                         </VBox>
