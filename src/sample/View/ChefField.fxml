@@ -21,7 +21,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <AnchorPane maxWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ChefFieldController">
     <children>
         <TabPane prefHeight="600.0" prefWidth="900.0">

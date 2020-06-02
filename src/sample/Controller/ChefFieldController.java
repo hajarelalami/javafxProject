@@ -306,7 +306,7 @@ public class ChefFieldController
                     gras1.setText(rs.getString("gras"));
                     gras2.setText(rs.getString("gras1"));
                     boi.setText(rs.getString("boi"));
-                    fr1.setText(rs.getString("frui1"));
+                    fr1.setText(rs.getString("fruit1"));
                     fr2.setText(rs.getString("fruit2"));
                     fr3.setText(rs.getString("fruit3"));
                     leg1.setText(rs.getString("leg1"));
@@ -441,7 +441,7 @@ public class ChefFieldController
         }
     }
 
-   private void DrawChartPoisson() {
+    private void DrawChartPoisson() {
         XYChart.Series<Date, Number> series = new XYChart.Series<>();
         Connection con = null;
         try {
@@ -661,7 +661,7 @@ public class ChefFieldController
         DatabaseHandler databaseHandler = new DatabaseHandler();
         LocalDate ChefOrderDa = ChefOrderDate.getValue();
         LocalDate ReceptionDa = ChefReceptionDate.getValue();
-        String Commande = " ";
+        String Commande = "none";
         if (ChefFraise.isSelected())
         {
             Commande = "Fraise";
