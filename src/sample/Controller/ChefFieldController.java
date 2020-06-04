@@ -1,9 +1,11 @@
+
 package sample.Controller;
+
 
 import static sample.Database.DatabaseHandler.getDbConnection;
 
 
-
+import java.io.IOException;
 import java.net.URL;
 
 import java.sql.Connection;
@@ -18,16 +20,19 @@ import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
 
-import java.util.Date;
-
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
+
+import javafx.collections.transformation.FilteredList;
+
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 
 
-
-import javafx.scene.chart.CategoryAxis;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 
 import javafx.scene.chart.NumberAxis;
@@ -58,16 +63,10 @@ import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javafx.stage.Stage;
 import sample.Database.DatabaseHandler;
 
-import sample.Model.MenuTable;
-
-import sample.Model.OrderTable;
-
-import sample.Model.Quantity;
-
-import sample.Model.Storage;
-
+import sample.Model.*;
 
 
 import javax.swing.*;
@@ -84,6 +83,9 @@ public class ChefFieldController
 
     private ComboBox<String> menunames;
 
+    @FXML
+
+    private Button updating;
 
 
     @FXML
@@ -95,6 +97,9 @@ public class ChefFieldController
     @FXML
 
     private TextField fr1;
+
+    @FXML
+    private TextField letsseeit;
 
 
 
@@ -144,11 +149,18 @@ public class ChefFieldController
 
     private TextField fr3;
 
+    @FXML
+    private Button Refresh;
+
 
 
     @FXML
 
     private TextField leg3;
+
+    @FXML
+
+    private TextField searchbox;
 
 
 
@@ -204,7 +216,7 @@ public class ChefFieldController
 
     @FXML
 
-    private TableView<MenuTable>						menushown;
+    private TableView<MenuTable> menushown;
 
 
 
@@ -354,6 +366,9 @@ public class ChefFieldController
 
     private MenuButton											MenuZone;
 
+    @FXML
+    private TextField manual;
+
 
 
 
@@ -410,7 +425,7 @@ public class ChefFieldController
 
     @FXML
 
-    private LineChart<Date, Number> ChartStorage;
+    private LineChart<Number, Number> ChartStorage;
 
     @FXML
 
@@ -428,7 +443,12 @@ public class ChefFieldController
 
     @FXML
 
-    private Button Refresh;
+    private Button update;
+
+    @FXML
+
+    private Button logs;
+
 
 
 
@@ -476,13 +496,39 @@ public class ChefFieldController
 
 
 
+        FilteredList<MenuTable> filteredData = new FilteredList<>(tableau, event-> true);
+        searchbox.setOnKeyPressed(event-> {
+            searchbox.textProperty().addListener((observableValue, oldValue, newValue) -> {
+                filteredData.setPredicate((Predicate<? super MenuTable>) table -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (table.getBreakfast().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                    else if(table.getLunch().toLowerCase().contains(lowerCaseFilter)){
+                        return true;
+                    }
+                    else if(table.getDinner().toLowerCase().contains(lowerCaseFilter)){
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<MenuTable> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(menushown.comparatorProperty());
+            menushown.setItems(sortedData);
+
+        });
+
         ContextMenu contextMenu=new ContextMenu();
 
-        MenuItem poisson=new MenuItem("poisson");
+        MenuItem poisson=new MenuItem("fish");
 
 
 
-        MenuItem fraise=new MenuItem("fraise");
+        MenuItem fraise=new MenuItem("strawberry");
 
         poisson.setOnAction(event->{
 
@@ -497,22 +543,7 @@ public class ChefFieldController
         });
 
         contextMenu.getItems().addAll(poisson,fraise);
-
-        Refresh.setOnContextMenuRequested(event-> {
-
-
-
-            contextMenu.show(Refresh,event.getScreenX(),event.getScreenY());
-
-
-
-        });
-
-
-
-
-
-        Refresh.setContextMenu(contextMenu);
+        
 
         StorageTable.setEditable(true);
 
@@ -524,19 +555,13 @@ public class ChefFieldController
 
             reseet();});
 
-        StorageAddElement.setOnAction(event -> {
-
-            addelement();
-
-
-
-        });
+        StorageAddElement.setOnAction(event -> { addelement();seethis(); testing();showw(); });
 
         StorageDeleteButton.setOnAction(event -> {
 
             try {
 
-                Delete();
+                Delete();seethis(); testing();showw();
 
             } catch (SQLException e) {
 
@@ -636,7 +661,113 @@ public class ChefFieldController
 
             AddData();
 
+            clear();
+
         });
+        logs.setOnAction(event -> {
+            LoginController.setUserConnectedId(null);
+            logs.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/Login.fxml"));
+            try
+            {
+                loader.load();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        update.setOnAction(event->{
+            tableau.removeAll(tableau);
+            UpdateTable();
+        });
+        MenuButton.setOnAction(event->{
+                clear();
+                String query="SELECT * FROM quantitytable WHERE element=?";
+
+                Connection con = null;
+
+                try {
+
+                    con = DatabaseHandler.getDbConnection();
+
+                } catch (ClassNotFoundException e) {
+
+                    e.printStackTrace();
+
+                } catch (SQLException throwables) {
+
+                    throwables.printStackTrace();
+
+                }
+
+                ResultSet rs = null;
+
+                PreparedStatement prp = null;
+
+                try {
+
+                    prp=con.prepareStatement(query);
+
+                } catch (SQLException throwables) {
+
+                    throwables.printStackTrace();
+
+                }
+
+                try {
+
+                    prp.setString(1,(String)MenuButton.getSelectionModel().getSelectedItem());
+
+                    rs = prp.executeQuery();
+
+                    while (rs.next()){
+
+                        InitialQuantity.setText(rs.getString("quantiteinitial"));
+
+                        ConsumedQuantity.setText(rs.getString("quantiteconsome"));
+
+                        OrderedQuantity.setText(rs.getString("quantitecommande"));
+
+                        letsseeit.setText(rs.getString("quantitepresent"));
+
+                    }
+
+                    prp.close();
+
+                    rs.close();
+
+                } catch (SQLException throwables) {
+
+                    throwables.printStackTrace();
+
+                }
+
+        });
+        updating.setOnAction(event->{
+            Edit();
+        });
+
+    }
+
+
+
+    private void clear() {
+
+        pick.getEditor().clear();
+
+        InitialQuantity.clear();
+
+        ConsumedQuantity.clear();
+
+        OrderedQuantity.clear();
+
+        letsseeit.clear();
 
     }
 
@@ -734,7 +865,7 @@ public class ChefFieldController
 
     private void DrawChartFraise() {
 
-        XYChart.Series<Date, Number> series = new XYChart.Series<>();
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
 
         Connection con = null;
 
@@ -804,7 +935,7 @@ public class ChefFieldController
 
             try
 
-            {   series.getData().add(new XYChart.Data(rs.getDate(1), rs.getInt(2)));
+            {   series.getData().add(new XYChart.Data(rs.getInt(1), rs.getInt(2)));
 
             }
 
@@ -828,7 +959,7 @@ public class ChefFieldController
 
     private void DrawChartPoisson() {
 
-        XYChart.Series<Date, Number> series = new XYChart.Series<>();
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
 
         Connection con = null;
 
@@ -854,7 +985,7 @@ public class ChefFieldController
 
         try {
 
-            prp = con.prepareStatement("SELECT SELECT date,quantitepresente FROM quantitytable  WHER quantitytable.element='poisson'");
+            prp = con.prepareStatement("SELECT  date,quantitepresente FROM quantitytable  WHER quantitytable.element='poisson'");
 
         } catch (SQLException throwables) {
 
@@ -898,7 +1029,7 @@ public class ChefFieldController
 
             try
 
-            {   series.getData().add(new XYChart.Data(rs.getDate(1), rs.getInt(2)));
+            {   series.getData().add(new XYChart.Data(rs.getInt(1), rs.getInt(2)));
 
             }
 
@@ -917,8 +1048,6 @@ public class ChefFieldController
         }
 
     }
-
-
 
 
 
@@ -1026,7 +1155,7 @@ public class ChefFieldController
 
         int ordered = Integer.parseInt(OrderedQuantity.getText());
 
-        int present = Integer.parseInt(InitialQuantity.getText())+Integer.parseInt(ConsumedQuantity.getText())-Integer.parseInt(OrderedQuantity.getText());
+        int present = Integer.parseInt(InitialQuantity.getText())-Integer.parseInt(ConsumedQuantity.getText());
 
 
 
@@ -1198,9 +1327,7 @@ public class ChefFieldController
 
             {
 
-                tableau
-
-                        .add(new MenuTable(rs.getInt("idpatientstable"), rs.getString("breakfast"), rs.getString("lunch"), rs.getString("dinner")));
+                tableau.add(new MenuTable(rs.getInt("idpatientstable"), rs.getString("breakfast"), rs.getString("lunch"), rs.getString("dinner")));
 
             }
 
@@ -1252,6 +1379,8 @@ public class ChefFieldController
 
         menushown.setItems(tableau);
 
+
+
     }
 
 
@@ -1261,24 +1390,18 @@ public class ChefFieldController
     {
 
         DatabaseHandler databaseHandler = new DatabaseHandler();
-
         LocalDate ChefOrderDa = ChefOrderDate.getValue();
 
-        LocalDate ReceptionDa = ChefReceptionDate.getValue();
+        String Commande = manual.getText();
 
-        String Commande = " ";
-
-        if (ChefFraise.isSelected())
-
-        {
-
-            Commande = "Fraise";
-
-        }
+        //String Commande = ChefOrder.getValue();
 
         String Quantity = ChefQuantity.getText();
+        if(Commande.isEmpty()){
+            Commande = ChefOrder.getValue();
+        }
 
-        OrderTable order = new OrderTable(ChefOrderDa, ReceptionDa, Commande, Quantity);
+        OrderTable order = new OrderTable(ChefOrderDa, Commande, Quantity);
 
         databaseHandler.makeorder(order);
 
@@ -1288,9 +1411,11 @@ public class ChefFieldController
 
         ChefOrderDate.getEditor().clear();
 
-        ChefReceptionDate.getEditor().clear();
+        //ChefReceptionDate.getEditor().clear();
 
         ChefQuantity.clear();
+        ChefOrder.getEditor().clear();
+        manual.clear();
 
     }
 
@@ -1324,11 +1449,11 @@ public class ChefFieldController
 
         if(TypeHumide.isSelected()){
 
-            storagetype="humide";
+            storagetype="humid";
 
         }else if(TypeFroid.isSelected()){
 
-            storagetype="froid";
+            storagetype="Cold";
 
         }else{
 
@@ -1340,23 +1465,22 @@ public class ChefFieldController
 
         idelement = "";
 
-        if(ZoneA.isSelected() || TypeHumide.isSelected()){
+        if(ZoneA.isSelected() && TypeHumide.isSelected()){
 
             idelement="AH"+TextidElement.getText().trim();
 
-        }else if(ZoneA.isSelected() || TypeFroid.isSelected()){
+        }else if(ZoneA.isSelected() && TypeFroid.isSelected()){
 
             idelement="AF"+TextidElement.getText().trim();
 
-        }else if(ZoneB.isSelected() || TypeHumide.isSelected()){
+        }else if(ZoneB.isSelected() && TypeHumide.isSelected()){
 
             idelement="BH"+TextidElement.getText().trim();
 
-        }else{
-
+        }else if(ZoneB.isSelected() && TypeFroid.isSelected()){
             idelement="BF"+TextidElement.getText().trim();
+    }
 
-        }
 
         Storage storage = new Storage( idelement,elementName, Storagezone, storagetype);
 
@@ -1552,7 +1676,7 @@ public class ChefFieldController
 
             pst.execute();
 
-            JOptionPane.showMessageDialog(null, "that element have been deleted ");
+            JOptionPane.showMessageDialog(null, "that element has been deleted ");
 
             UpdateTabl();
 
@@ -1571,12 +1695,175 @@ public class ChefFieldController
 
 
     }
+    public void Edit()
+    {
+        try
+        {
+            String tmp;
+            conu = DatabaseHandler.getDbConnection();
+            String Value0 = MenuButton.getValue();
+            LocalDate Value1 = pick.getValue();
+            String Value2 = InitialQuantity.getText();
+
+            String Value3 = ConsumedQuantity.getText();
+            String Value4 = OrderedQuantity.getText();
+            Integer Value5 = Integer.parseInt(InitialQuantity.getText())-Integer.parseInt(ConsumedQuantity.getText());
 
 
+            String sql = "UPDATE quantitytable SET date = '" +
+                    Value1 + "',quantiteinitial = '" + Value2 + "',quantiteconsome = '" + Value3 + "',quantitecommande = '" +
+                    Value4 + "',quantitepresent = '" + Value5 +  "' WHERE element = '" +
+                    Value0 + "' ";
+            PreparedStatement psst = conu.prepareStatement(sql);
+            System.out.println(sql);
+            psst.execute();
+            UpdateTable();
+        }
+        catch (SQLException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void seethis()
+    {
+        ChefOrder.getItems().clear();
+    }
+    public void testing()
+    {
+        try
+        {
+            conu = DatabaseHandler.getDbConnection();
+        }
+        catch (ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+        ResultSet rs = null;
+
+        PreparedStatement prp = null;
+        try
+        {
+            prp = conu.prepareStatement("SELECT element from storagetable ");
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+        try
+        {
+            rs = prp.executeQuery();
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        while (true)
+        {
+            try
+            {
+                if (!rs.next())
+                    break;
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try
+            {
+                ChefOrder.getItems().clear();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+            try
+            {
+                conu = DatabaseHandler.getDbConnection();
+            }
+            catch (ClassNotFoundException | SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void showw() {
+        try {
+            conu = DatabaseHandler.getDbConnection();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        ResultSet rs = null;
+
+        PreparedStatement prp = null;
+        try {
+            prp = conu.prepareStatement("SELECT element from storagetable");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            rs = prp.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        MenuButton.getItems().clear();
+
+        while (true) {
+            try {
+                if (!rs.next())
+                    break;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                //BreakfastBox.getItems().clear();
+                MenuButton.getItems().addAll(rs.getString("element"));
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                conu = DatabaseHandler.getDbConnection();
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+            ResultSet res = null;
+
+            PreparedStatement prep = null;
+            try {
+                prep = conu.prepareStatement("SELECT  element from storagetable ");
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            try {
+                res = prep.executeQuery();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            ChefOrder.getItems().clear();
+
+            while (true) {
+                try {
+                    if (!res.next())
+                        break;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    ChefOrder.getItems().addAll(res.getString("element"));
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 
 
 }
-
-
-

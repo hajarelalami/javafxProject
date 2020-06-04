@@ -15,9 +15,8 @@ public class OrderTable {
 
 	}
 
-	public OrderTable(LocalDate chefOrderDa, LocalDate receptionDa, String commande, String quantity) {
+	public OrderTable(LocalDate chefOrderDa, String commande, String quantity) {
 			this.cdate = chefOrderDa;
-			this.rdate = receptionDa;
 			Commande = commande;
 			Quantity = quantity;
 		}

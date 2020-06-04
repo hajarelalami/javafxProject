@@ -193,6 +193,7 @@ public class MedFieldController
 	void initialize()
 	{
 		fill();
+		showing();
 		Connection con = null;
 		seethis();
 		showw();
@@ -566,7 +567,6 @@ public class MedFieldController
 		}
 		selectedPatientId.setText(String.valueOf(PatientID.getCellData(index)).toString());
 		medPatientName.setText(PatientName.getCellData(index).toString());
-
 	}
 
 	@FXML
@@ -592,53 +592,8 @@ public class MedFieldController
 
 	public void fill()
 	{
-		gras1.getItems().addAll("oil", "egg", "butter", "aucun");
-		gras2.getItems().addAll("oil", "egg", "butter", "aucun");
-		boi.getItems().addAll("Tea", "juice", "cofe", "aucun");
-		frui1.getItems().addAll("apple", "avocado", "banana", "Apricots", "Date Fruit", "aucun");
-		fruit2.getItems().addAll("apple", "avocado", "banana", "Apricots", "Date Fruit", "aucun");
-		fruit3.getItems().addAll("apple", "avocado", "banana", "Apricots", "Date Fruit", "aucun");
-		leg1
-			.getItems()
-			.addAll(
-				"tomato",
-				"potato",
-				"eggplant",
-				"green pepper",
-				"carrot",
-				"garlic",
-				"broccoli",
-				"aucun"
-			);
-		leg2
-			.getItems()
-			.addAll(
-				"tomato",
-				"potato",
-				"eggplant",
-				"green pepper",
-				"carrot",
-				"garlic",
-				"broccoli",
-				"aucun"
-			);
-		leg3
-			.getItems()
-			.addAll(
-				"tomatoes",
-				"potatoes",
-				"eggplant",
-				"green pepper",
-				"carrot",
-				"garlic",
-				"broccoli",
-				"aucun"
-			);
-		cereal2.getItems().addAll("bread", "cereal", "pasta", "oats", "corn", "aucun");
-		cereal1.getItems().addAll("bread", "cereal", "pasta", "oats", "corn", "aucun");
-		vvpolav.getItems().addAll("meat", "fish", "chicken", "aucun");
-		StatusBox.getItems().addAll("intesif care", "normal");
-		DietBox.getItems().addAll("sugar free","no Salt", "normal");
+		StatusBox.getItems().addAll("Intesif care", "Normal");
+		DietBox.getItems().addAll("Sugar Free","No Salt", "Normal");
 	}
 
 	public void UpdateTable()
@@ -942,6 +897,71 @@ public class MedFieldController
 				DinnerBox.getItems().clear();
 			}
 
+		}
+	}
+	public void showing() {
+		try {
+			conu = DatabaseHandler.getDbConnection();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		ResultSet rs = null;
+
+		PreparedStatement prp = null;
+		try {
+			prp = conu.prepareStatement("SELECT element from storagetable ");
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+
+		try {
+			rs = prp.executeQuery();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		gras1.getItems().clear();
+		gras2.getItems().clear();
+		boi.getItems().clear();
+		frui1.getItems().clear();
+		fruit2.getItems().clear();
+		fruit3.getItems().clear();
+		leg1.getItems().clear();
+		leg2.getItems().clear();
+		leg3.getItems().clear();
+		vvpolav.getItems().clear();
+		cereal1.getItems().clear();
+		cereal2.getItems().clear();
+
+		while (true) {
+			try {
+				if (!rs.next())
+					break;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			try {
+				gras1.getItems().addAll(rs.getString("element"));
+				gras2.getItems().addAll(rs.getString("element"));
+				boi.getItems().addAll(rs.getString("element"));
+				frui1.getItems().addAll(rs.getString("element"));
+				fruit2.getItems().addAll(rs.getString("element"));
+				fruit3.getItems().addAll(rs.getString("element"));
+				leg1.getItems().addAll(rs.getString("element"));
+				leg2.getItems().addAll(rs.getString("element"));
+				leg3.getItems().addAll(rs.getString("element"));
+				vvpolav.getItems().addAll(rs.getString("element"));
+				cereal1.getItems().addAll(rs.getString("element"));
+				cereal2.getItems().addAll(rs.getString("element"));
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				conu = DatabaseHandler.getDbConnection();
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

@@ -159,26 +159,26 @@
                                         </RadioButton>
                                         <VBox layoutX="282.0" layoutY="102.0" spacing="15.0">
                                             <children>
-                                                <ComboBox fx:id="gras2" prefHeight="25.0" prefWidth="150.0" promptText="Matiere grasse" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="leg2" prefWidth="150.0" promptText="Legume" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="fruit2" prefWidth="150.0" promptText="Fruit" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="cereal1" prefWidth="150.0" promptText="Produit cerealisé" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="gras2" prefHeight="25.0" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="leg2" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="fruit2" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="cereal1" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
                                             </children>
                                         </VBox>
                                         <VBox layoutX="24.0" layoutY="102.0" spacing="15.0">
                                             <children>
-                                                <ComboBox fx:id="gras1" prefWidth="150.0" promptText="Matiere grasse" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="frui1" prefWidth="150.0" promptText="Fruit" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="leg1" prefWidth="150.0" promptText="Legumes" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="cereal2" prefWidth="150.0" promptText="Produit cerealisé" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="gras1" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="frui1" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="leg1" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="cereal2" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
                                             </children>
                                         </VBox>
                                         <VBox layoutX="535.0" layoutY="102.0" spacing="15.0">
                                             <children>
-                                                <ComboBox fx:id="boi" prefHeight="25.0" prefWidth="150.0" promptText="Boisson" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="fruit3" prefHeight="25.0" prefWidth="150.0" promptText="Fruit" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="vvpolav" prefHeight="25.0" prefWidth="150.0" promptText="Vvpolav" style="-fx-background-color: #FFFFFF;" />
-                                                <ComboBox fx:id="leg3" prefHeight="25.0" prefWidth="150.0" promptText="Legume" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="boi" prefHeight="25.0" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="fruit3" prefHeight="25.0" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="vvpolav" prefHeight="25.0" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
+                                                <ComboBox fx:id="leg3" prefHeight="25.0" prefWidth="150.0" promptText="Ingredients" style="-fx-background-color: #FFFFFF;" />
                                             </children>
                                         </VBox>
                                         <VBox layoutX="245.0" layoutY="322.0" spacing="15.0">
